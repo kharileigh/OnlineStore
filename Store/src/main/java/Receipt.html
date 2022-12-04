@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <title>supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <h1>Online Store</h1>
+    <hr>
+    <h3 th:text="'Receipt for : ' + ${session.buyer.buyerName} + ' !'"></h3>
+    <hr>
+   
+    
+    <table border="1">
+
+        <tr>
+            <th>Buyer ID</th>
+            <th>Name of Product</th>
+            <th>Total Products</th>
+            <th>Total Cost</th>
+        </tr>
+        
+        <!-- FOR EACH PRODUCT, MAP ITS DATA INTO TABLE ROW -->
+        <tr>
+            <td th:text="${receipt.buyer.buyerId}"></td>
+            <td th:text="${receipt.product.productName}"></td>
+            <td th:text="${receipt.totalProducts}"></td>
+            <td th:text="${receipt.totalCost}"></td>
+        </tr>  
+        
+    </table>
+    <br><br>
+    
+    <!<!-- REDIRECTS USER TO BUYING PAGE -->
+    <a href="./login"> Logout </a>
+
+</body>
+
+</html>

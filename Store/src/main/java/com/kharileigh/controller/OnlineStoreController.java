@@ -8,8 +8,10 @@ package com.kharileigh.controller;
 
 import com.kharileigh.entity.Buyer;
 import com.kharileigh.entity.Product;
+import com.kharileigh.entity.Receipt;
 import com.kharileigh.model.service.OnlineStoreService;
 import java.util.Collection;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -65,6 +67,7 @@ public class OnlineStoreController {
     
         ModelAndView modelAndView = new ModelAndView();
         
+        // calls Service to return all products in a Collection
         Collection<Product> products = service.showAllProducts();
         
         modelAndView.addObject("products", products);
@@ -76,6 +79,43 @@ public class OnlineStoreController {
     
     
     //================ COMPLETE PURCHASE
+    @RequestMapping("/purchase")
+    public ModelAndView checkoutController(@RequestParam("productId") int id, @RequestParam("quantity") int quantity, HttpServlet request, HttpSession session) {
     
+        ModelAndView modelAndView = new ModelAndView();
+        
+        // FIRST DISPLAYS PRODUCTS FOR BUYER TO CHOOSE FROM
+        Collection<Product> products = service.showAllProducts();
+        modelAndView.addObject("products", products);
+        
+        // GET CURRENT BUYER OF SESSION, then grab their id
+        Buyer currentBuyer = (Buyer)session.getAttribute("buyer");
+        int currentBuyerId = currentBuyer.getBuyerId();
+        
+        // NEW MAV FOR PROCESSING PURCHASE
+        ModelAndView mav = new ModelAndView();
+        int product = Integer.parseInt("productId");
+        int quantityOfProduct = Integer.parseInt("quantity");
+        
+        
+        // GET RECEIPT OBJECT - ADD DETAILS FROM PURCHASE - PRINT TO BUYER
+        Receipt currentBuyerReceipt = service.buyerReceipt(currentBuyerId, product, quantityOfProduct);
+        
+        if (currentBuyerReceipt != null) {
+        
+            mav.addObject("receipt", currentBuyerReceipt);
+            mav.setViewName("Receipt");
+            
+        } else {
+        
+            mav.addObject("message", "Purchase failed, please check you have enough money to make purchas.");
+            mav.setViewName("Output");
+        }
+        
+        
+        
+        return mav;
+   
+    }
     
 }
