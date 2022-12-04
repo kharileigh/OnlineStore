@@ -62,6 +62,7 @@ public class OnlineStoreController {
     
     
     //================ SHOW PRODUCTS TO BUYER
+    // After Buyer logs in, shown all products that are available
     @RequestMapping("/productPage")
     public ModelAndView productPageController() {
     
@@ -77,7 +78,7 @@ public class OnlineStoreController {
         return modelAndView;
     }
     
-    
+    // Shows buyer product lists, and form to purchase then displays receipt
     //================ COMPLETE PURCHASE
     @RequestMapping("/purchase")
     public ModelAndView checkoutController(@RequestParam("productId") int id, @RequestParam("quantity") int quantity, HttpServlet request, HttpSession session) {

@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.kharileigh.model.persistence")
 public class OnlineStoreApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OnlineStoreApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(OnlineStoreApplication.class, args);
+    }
 
 }
