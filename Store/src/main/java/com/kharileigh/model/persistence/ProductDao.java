@@ -6,7 +6,6 @@
 package com.kharileigh.model.persistence;
 
 import com.kharileigh.entity.Product;
-import java.util.Collection;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
