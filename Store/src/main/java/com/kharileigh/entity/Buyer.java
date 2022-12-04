@@ -33,4 +33,8 @@ public class Buyer {
     
     @Column(name = "BUYER_PASSWORD")
     private String buyerPassword;
+    
+    
+    @Column(name = "BUYER_BALANCE")
+    private double buyerBalance;
 }
