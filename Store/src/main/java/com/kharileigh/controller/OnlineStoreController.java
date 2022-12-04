@@ -7,7 +7,9 @@
 package com.kharileigh.controller;
 
 import com.kharileigh.entity.Buyer;
+import com.kharileigh.entity.Product;
 import com.kharileigh.model.service.OnlineStoreService;
+import java.util.Collection;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,7 @@ public class OnlineStoreController {
     }
     
     
+    //====================== LOGIN
     // ModelAttribute - used when taking the full object / record from database
     // RequestParam - used when taking partial data from object / record from database
     @RequestMapping("/login")
@@ -54,5 +57,25 @@ public class OnlineStoreController {
         
         return modelAndView;
     }
+    
+    
+    //================ SHOW PRODUCTS TO BUYER
+    @RequestMapping("/productPage")
+    public ModelAndView productPageController() {
+    
+        ModelAndView modelAndView = new ModelAndView();
+        
+        Collection<Product> products = service.showAllProducts();
+        
+        modelAndView.addObject("products", products);
+        
+        modelAndView.setViewName("ProductPage");
+        
+        return modelAndView;
+    }
+    
+    
+    //================ COMPLETE PURCHASE
+    
     
 }

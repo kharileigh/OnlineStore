@@ -6,6 +6,7 @@
 package com.kharileigh.model.persistence;
 
 import com.kharileigh.entity.Product;
+import java.util.Collection;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductDao extends JpaRepository<Product, Integer> {
+    
     
     // UPDATES BUYER'S BALANCE BY DEDUCTING THE PRICE OF PRODUCTS PURCHASED
     @Modifying

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <title>supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <h1>Online Store</h1>
+    <hr>
+    <h3 th:text="'Welcome ' + ${session.buyer.buyerName} + ' !'"></h3>
+    <hr>
+    <h2> Product List </h2>
+    
+    <table border="1">
+
+        <tr>
+            <th>Product ID</th>
+            <th>Name of Product</th>
+            <th>Price</th>
+            <th>Total Stock</th>
+        </tr>
+        
+        <!-- FOR EACH PRODUCT, MAP ITS DATA INTO TABLE ROW -->
+        <tr th:each="product : ${products}">
+            <td th:text="${product.productId}"></td>
+            <td th:text="${product.productName}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.stock}"></td>
+        </tr>  
+        
+    </table>
+    <br><br>
+    
+    <!<!-- REDIRECTS USER TO BUYING PAGE -->
+    <a href="./checkout"> Go to Checkout </a>
+
+</body>
+
+</html>

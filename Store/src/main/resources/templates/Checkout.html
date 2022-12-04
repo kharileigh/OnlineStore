@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <title>supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <h1>Online Store</h1>
+    <hr></hr>
+    <h3 th:text="'Welcome ' + ${session.buyer.buyerName} + ' !' "></h3>
+
+    <table>
+
+        <tr>
+            <th>Product ID</th>
+            <th>Name of Product</th>
+            <th>Price</th>
+            <th>Total Stock</th>
+        </tr>
+        
+        <!<!-- FOR EACH PRODUCT, MAP ITS DATA INTO TABLE ROW -->
+        <tr th:each="product : ${products}">
+            <td th:text="${product.productId}"></td>
+            <td th:text="${product.productName}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.stock}"></td>
+        </tr>
+    </table>
+    <br><br>
+    
+    <form action="./purchase">
+        Enter Product ID <input type="number" name="productId"><br><br>
+        Enter Quantity to Purchase <input type="number" name="quantity"><br><br>
+        
+        <input type="submit" value="Purchase">
+        
+    </form>
+    
+    <!<!-- REDIRECTS USER TO BUYING PAGE -->
+    <a href="./receipt"> View Receipt </a>
+
+</body>
+
+</html>
