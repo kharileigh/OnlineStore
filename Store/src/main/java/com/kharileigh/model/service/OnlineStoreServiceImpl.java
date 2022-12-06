@@ -73,7 +73,7 @@ public class OnlineStoreServiceImpl  implements OnlineStoreService {
             
         
             // return receipt if successful purchase, null if not
-            if(cost < (buyer.getBuyerBalance()) && (updatedStock != 0)) {
+            if(cost < (updatedBalance) && (updatedStock != 0)) {
             
                 return new Receipt();
                 

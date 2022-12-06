@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+// <Entity, Data Type>
 @Repository("dao")
 public interface BuyerDao extends JpaRepository<Buyer, Integer> {
     
